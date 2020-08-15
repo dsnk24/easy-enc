@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="easyenc",
-    version="0.0.1",
+    version="0.0.2",
     author="dsnk",
     author_email="erick.8bld@gmail.com",
     description="An easy encryption module.",
