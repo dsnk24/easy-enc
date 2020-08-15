@@ -14,7 +14,7 @@ class KeyGenerator:
 
 		kdf = PBKDF2HMAC(
 			algorithm=hashes.SHA256(),
-			length=32,
+			length=64,
 			salt=salt,
 			iterations=100000,
 			backend=default_backend()
@@ -32,7 +32,7 @@ class KeyGenerator:
 
 		kdf = PBKDF2HMAC(
 			algorithm=hashes.SHA256(),
-			length=32,
+			length=64,
 			salt=salt,
 			iterations=100000,
 			backend=default_backend()
@@ -44,16 +44,16 @@ class KeyGenerator:
 			f.write(key)
 
 
-	def store_key(self, filename="key.key", key=None):
-		if key != None:
+	def store_key(self, filename="key.key", key="null"):
+		if key != "null":
 			file = open(filename, "wb")
 			file.write(key)
 			file.close()
 		else:
-			print("No key specified.")
+			print("No key specified. Saved key as null.")
 
 		if filename == "key.key":
-			print("Stored key in the 'key.key' file because no filename was specified.")
+			print("Stored key in the key.key file because no filename was specified.")
 		else:
 			print(f"Stored key in the {filename} file.")
 	
@@ -67,22 +67,22 @@ class KeyGenerator:
 
 
 class Encryptor:
-	def encrypt_message(self, msg_data="".encode(), key=None):
-		if key != None:
+	def encrypt_message(self, msg_data="", key="null"):
+		if key != "null":
 			fernet = Fernet(key)
-			enc_msg = fernet.encrypt(msg_data.encode())
+			enc_msg = fernet.encrypt(msg_data)
 
-			return enc_msg.decode()
+			return enc_msg
 		else:
 			print("No key to encrypt with.")
 	
 
-	def decrypt_message(self, msg_data="".encode(), key="null"):
+	def decrypt_message(self, msg_data="", key="null"):
 		if key != "null":
 			fernet = Fernet(key)
-			dec_msg = fernet.decrypt(msg_data.encode())
+			dec_msg = fernet.decrypt(msg_data)
 
-			return dec_msg.decode()
+			return dec_msg
 		
 		else:
 			print("No key to decrypt with.")

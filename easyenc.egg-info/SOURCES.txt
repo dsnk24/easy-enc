@@ -1,0 +1,8 @@
+README.md
+setup.py
+EasyEnc/__init__.py
+EasyEnc/classes.py
+easyenc.egg-info/PKG-INFO
+easyenc.egg-info/SOURCES.txt
+easyenc.egg-info/dependency_links.txt
+easyenc.egg-info/top_level.txt
